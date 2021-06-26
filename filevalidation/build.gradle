@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'com.utility'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.0'
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
