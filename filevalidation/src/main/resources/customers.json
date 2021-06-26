@@ -1,0 +1,34 @@
+{
+  "name": "Custmer",
+  "columns": [
+    {
+      "name": "Id",
+      "type": "Nvarchar",
+      "rectrictions": [
+        "NotNull",
+        "PrimaryKey"
+      ]
+    },
+    {
+      "name": "Name",
+      "type": "Nvarchar",
+      "rectrictions": [
+        "NotNull"
+      ]
+    },
+    {
+      "name": "Address",
+      "type": "Nvarchar",
+      "rectrictions": [
+        "Nullable"
+      ]
+    },
+    {
+      "name": "Address",
+      "type": "Nvarchar",
+      "rectrictions": [
+        "Nullable"
+      ]
+    }
+  ]
+}
