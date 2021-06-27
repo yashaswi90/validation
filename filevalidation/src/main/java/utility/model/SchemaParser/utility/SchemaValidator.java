@@ -7,6 +7,7 @@ import static utility.model.SchemaParser.constants.Constants.N_VARCHAR;
 import java.util.List;
 import java.util.Objects;
 
+import utility.model.SchemaParser.exception.FileValidatorException;
 import utility.model.SchemaParser.model.Row;
 import utility.model.SchemaParser.model.entity.Table;
 import utility.model.SchemaParser.enums.RestrictionEnum;
@@ -46,7 +47,7 @@ public class SchemaValidator {
                         }
                     } catch (Exception e) {
                         System.out.println("Record has error at line  " + (i + 1));
-                        throw new RuntimeException(e);
+                        throw new FileValidatorException(e.getMessage());
                     }
 
                 }

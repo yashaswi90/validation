@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import utility.model.SchemaParser.exception.FileValidatorException;
 import utility.model.SchemaParser.model.Row;
 import utility.model.SchemaParser.model.entity.Schemas;
 
@@ -25,7 +26,7 @@ public class FileValidatorUtility {
     private static void validateRecord(String SCHEMA_PATH_FILE) throws IOException {
         boolean foreignFlag = false;
         Schemas schemas = createObjectFromSchemaFile(SCHEMA_PATH_FILE);
-        dropTables(foreignFlag, schemas);
+//        dropTables(foreignFlag, schemas);
         foreignFlag = createTables(foreignFlag, schemas);
         addForeignConstraint(foreignFlag, schemas);
 
@@ -54,6 +55,7 @@ public class FileValidatorUtility {
             validateRecord(SCHEMA_PATH_FILE);
         } catch (IOException e) {
             e.printStackTrace();
+            throw new FileValidatorException(e.getMessage());
         }
     }
 

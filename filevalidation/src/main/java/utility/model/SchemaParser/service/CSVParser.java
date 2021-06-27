@@ -15,6 +15,7 @@ import org.apache.commons.csv.CSVRecord;
 
 import com.opencsv.CSVReader;
 
+import utility.model.SchemaParser.exception.FileValidatorException;
 import utility.model.SchemaParser.model.ColumnRecord;
 import utility.model.SchemaParser.model.Row;
 import utility.model.SchemaParser.model.entity.Table;
@@ -42,10 +43,9 @@ public class CSVParser {
 
             return rows;
         } catch (IOException e) {
-            System.out.println("Error at line number ");
             e.printStackTrace();
+            throw new FileValidatorException(e.getMessage());
         }
-        return Collections.emptyList();
     }
 
 
@@ -80,6 +80,7 @@ public class CSVParser {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            throw new FileValidatorException(e.getMessage());
         }
     }
 

@@ -30,6 +30,7 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import utility.model.SchemaParser.exception.FileValidatorException;
 import utility.model.SchemaParser.model.entity.Column;
 import utility.model.SchemaParser.model.Row;
 import utility.model.SchemaParser.model.entity.Schemas;
@@ -108,6 +109,7 @@ public class SQLUtility {
             Class.forName(MYSQL_DRIVER);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            throw new FileValidatorException(e.getMessage());
         }
         try (Connection conn = DriverManager.getConnection(
                 DB_URL, USER, PASS);
@@ -121,6 +123,7 @@ public class SQLUtility {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new FileValidatorException(e.getMessage());
         }
         return execute;
     }
