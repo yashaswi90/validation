@@ -43,7 +43,6 @@ public class SchemaValidator {
 
                                 continue;
                             }
-
                         }
                     } catch (Exception e) {
                         System.out.println("Record has error at line  " + (i + 1));
