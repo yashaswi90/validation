@@ -1,0 +1,82 @@
+{
+  "Tables": [
+    {
+      "name": "Customers",
+      "columns": [
+        {
+          "name": "Id",
+          "type": "Number",
+          "rectrictions": [
+            "NotNull",
+            "PrimaryKey"
+          ]
+        },
+        {
+          "name": "Name",
+          "type": "Nvarchar",
+          "rectrictions": [
+            "NotNull"
+          ]
+        },
+        {
+          "name": "Address",
+          "type": "Nvarchar",
+          "rectrictions": [
+            "Nullable"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SalesPerson",
+      "columns": [
+        {
+          "name": "Id",
+          "type": "Nvarchar",
+          "rectrictions": [
+            "NotNull",
+            "PrimaryKey"
+          ]
+        },
+        {
+          "name": "Name",
+          "type": "Nvarchar",
+          "rectrictions": [
+            "NotNull"
+          ]
+        },
+        {
+          "name": "Address",
+          "type": "Nvarchar",
+          "rectrictions": [
+            "Nullable"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CustomerToSalesPerson",
+      "columns": [
+        {
+          "name": "CustomerId",
+          "type": "Number",
+          "rectrictions": [
+            "NotNull",
+            "ForeignKey"
+          ]
+        },
+        {
+          "name": "SalesPersonId",
+          "type": "Nvarchar",
+          "rectrictions": [
+            "NotNull",
+            "ForeignKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
+
