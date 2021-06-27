@@ -1,4 +1,4 @@
-package utility.model.SchemaParser.model;
+package utility.model.SchemaParser.model.entity;
 
 import java.util.List;
 

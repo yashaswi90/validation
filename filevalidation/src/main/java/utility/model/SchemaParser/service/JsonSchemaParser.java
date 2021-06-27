@@ -23,8 +23,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 
 import utility.model.SchemaParser.model.Row;
-import utility.model.SchemaParser.model.Schemas;
-import utility.model.SchemaParser.model.Table;
+import utility.model.SchemaParser.model.entity.Schemas;
+import utility.model.SchemaParser.model.entity.Table;
 
 public class JsonSchemaParser {
 

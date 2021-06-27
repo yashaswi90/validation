@@ -12,7 +12,7 @@ import org.apache.commons.csv.CSVRecord;
 
 import utility.model.SchemaParser.model.ColumnRecord;
 import utility.model.SchemaParser.model.Row;
-import utility.model.SchemaParser.model.Table;
+import utility.model.SchemaParser.model.entity.Table;
 
 public class CSVParser {
     public static List<Row> parse(String path, Table obj) {

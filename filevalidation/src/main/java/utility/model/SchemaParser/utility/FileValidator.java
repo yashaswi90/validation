@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 import utility.model.SchemaParser.model.Row;
-import utility.model.SchemaParser.model.Table;
+import utility.model.SchemaParser.model.entity.Table;
 import utility.model.SchemaParser.enums.RestrictionEnum;
 
 public class FileValidator {

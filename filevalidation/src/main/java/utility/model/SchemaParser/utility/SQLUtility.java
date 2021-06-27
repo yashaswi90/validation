@@ -30,10 +30,10 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import utility.model.SchemaParser.model.Column;
+import utility.model.SchemaParser.model.entity.Column;
 import utility.model.SchemaParser.model.Row;
-import utility.model.SchemaParser.model.Schemas;
-import utility.model.SchemaParser.model.Table;
+import utility.model.SchemaParser.model.entity.Schemas;
+import utility.model.SchemaParser.model.entity.Table;
 import utility.model.SchemaParser.enums.RestrictionEnum;
 
 public class SQLUtility {
