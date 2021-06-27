@@ -3,12 +3,17 @@ package utility.model.SchemaParser.service;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+
+import com.opencsv.CSVReader;
 
 import utility.model.SchemaParser.model.ColumnRecord;
 import utility.model.SchemaParser.model.Row;
@@ -41,6 +46,41 @@ public class CSVParser {
             e.printStackTrace();
         }
         return Collections.emptyList();
+    }
+
+
+    public static void readDataLineByLine(String file, Table objectFromSchemaFile) {
+
+        try {
+
+            FileReader filereader = new FileReader(file);
+
+            Path path = Paths.get(file);
+            Path fileName = path.getFileName();
+            String s = fileName.toString();
+            System.out.println(s);
+            String[] split = s.split("\\.");
+
+            System.out.println(split[0]);
+
+            CSVReader csvReader = new CSVReader(filereader);
+            String[] nextRecord;
+
+            Class<? extends String> aClass = split[0].getClass();
+
+
+            HashMap<String, Object> map = new HashMap<>();
+
+
+            while ((nextRecord = csvReader.readNext()) != null) {
+                for (String cell : nextRecord) {
+                    System.out.print(cell + "\t");
+                }
+                System.out.println();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static Row initRow(List<String> columnNames, CSVRecord csvRecord, String tableName) {

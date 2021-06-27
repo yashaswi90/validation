@@ -11,7 +11,7 @@ import utility.model.SchemaParser.model.Row;
 import utility.model.SchemaParser.model.entity.Table;
 import utility.model.SchemaParser.enums.RestrictionEnum;
 
-public class FileValidator {
+public class SchemaValidator {
     public static void validateSchemaTypeValue(Table objectFromSchemaFile, List<Row> rows) {
         for (int i = 0; i < rows.size(); i++) {
             for (int j = 0, k = 0; j < rows.get(i).columns.size() && k < objectFromSchemaFile.columns.size(); j++, k++) {

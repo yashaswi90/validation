@@ -37,7 +37,7 @@ import utility.model.SchemaParser.model.entity.Table;
 import utility.model.SchemaParser.enums.RestrictionEnum;
 
 public class SQLUtility {
-    public static void insertRecordsIntoTable(List<Row> parse, String collect) {
+    public static void insertRecordsIntoDB(List<Row> parse, String collect) {
         parse.stream().forEach(s -> {
             List<String> values = s.columns.stream().map(s1 -> s1.value).collect(Collectors.toList());
             String valuesJoin = values.stream().collect(Collectors.joining("','", "'", "'"));
