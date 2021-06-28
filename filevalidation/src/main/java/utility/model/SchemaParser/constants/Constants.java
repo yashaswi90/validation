@@ -2,6 +2,7 @@ package utility.model.SchemaParser.constants;
 
 public class Constants {
     public static final String CSV = ".csv";
+    public static final String TXT = ".txt";
     public static final String SET_FOREIGN_KEY_CHECKS_0 = "set foreign_key_checks=0";
     public static final String DB_URL = "jdbc:mysql://localhost:3306/filemanagement?useSSL=false";
     public static final String USER = "root";

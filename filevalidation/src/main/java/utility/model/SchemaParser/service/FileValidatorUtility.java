@@ -3,12 +3,11 @@ package utility.model.SchemaParser.service;
 import static utility.model.SchemaParser.constants.Constants.CSV;
 import static utility.model.SchemaParser.constants.Constants.PREFIX_FILE_PATH;
 import static utility.model.SchemaParser.constants.Constants.SCHEMA_PATH_FILE;
-import static utility.model.SchemaParser.service.CSVParser.parse;
-import static utility.model.SchemaParser.utility.SchemaValidator.validateSchemaTypeValue;
 import static utility.model.SchemaParser.utility.SQLUtility.addForeignConstraint;
 import static utility.model.SchemaParser.utility.SQLUtility.createTables;
 import static utility.model.SchemaParser.utility.SQLUtility.dropTables;
 import static utility.model.SchemaParser.utility.SQLUtility.insertRecordsIntoDB;
+import static utility.model.SchemaParser.utility.SchemaValidator.validateSchemaTypeValue;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,17 +22,24 @@ import utility.model.SchemaParser.model.entity.Schemas;
 
 public class FileValidatorUtility {
 
-    private static void validateRecord(String SCHEMA_PATH_FILE) throws IOException {
+    private static void validateRecord(String schemaPathFile, String extension) throws IOException {
         boolean foreignFlag = false;
-        Schemas schemas = createObjectFromSchemaFile(SCHEMA_PATH_FILE);
+        Schemas schemas = createObjectFromSchemaFile(schemaPathFile);
         dropTables(foreignFlag, schemas);
         foreignFlag = createTables(foreignFlag, schemas);
         addForeignConstraint(foreignFlag, schemas);
 
         schemas.tables.forEach(schema -> {
-            String filePath = PREFIX_FILE_PATH + schema.name + CSV;
-            List<Row> parse = parse(filePath,
-                    schema);
+            String filePath = PREFIX_FILE_PATH + schema.name + extension;
+            List<Row> parse = null;
+            if (extension.contains(CSV)) {
+                parse = CSVParser.parse(filePath,
+                        schema);
+            } else {
+
+                parse = TextFileParser.parse(filePath,
+                        schema);
+            }
             validateSchemaTypeValue(schemas.tables.get(0), parse);
             String collect = parse.get(0).columns.stream().map(s1 -> s1.name).collect(Collectors.joining(","));
 
@@ -52,7 +58,7 @@ public class FileValidatorUtility {
     public static void main(String[] args) {
         try {
 
-            validateRecord(SCHEMA_PATH_FILE);
+            validateRecord(SCHEMA_PATH_FILE, CSV);
         } catch (IOException e) {
             e.printStackTrace();
             throw new FileValidatorException(e.getMessage());

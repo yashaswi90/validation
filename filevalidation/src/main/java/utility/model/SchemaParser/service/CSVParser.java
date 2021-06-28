@@ -20,7 +20,7 @@ import utility.model.SchemaParser.model.ColumnRecord;
 import utility.model.SchemaParser.model.Row;
 import utility.model.SchemaParser.model.entity.Table;
 
-public class CSVParser {
+public class CSVParser{
     public static List<Row> parse(String path, Table obj) {
         try {
             File csvData = new File(path);
