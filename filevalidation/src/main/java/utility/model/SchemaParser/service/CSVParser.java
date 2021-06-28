@@ -1,16 +1,16 @@
 package utility.model.SchemaParser.service;
 
+import static org.apache.commons.csv.CSVFormat.RFC4180;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
 import com.opencsv.CSVReader;
@@ -25,8 +25,8 @@ public class CSVParser {
         try {
             File csvData = new File(path);
 
-            org.apache.commons.csv.CSVParser parser = org.apache.commons.csv.CSVParser.parse(new FileReader(csvData), CSVFormat.RFC4180);
-            System.out.println(parser.getHeaderMap());
+            org.apache.commons.csv.CSVParser parser = org.apache.commons.csv.CSVParser.parse(new FileReader(csvData),
+                    RFC4180);
             List<String> columnNames = null;
             List<Row> rows = new ArrayList<>();
             for (CSVRecord csvRecord : parser) {
