@@ -20,7 +20,7 @@ import utility.model.SchemaParser.exception.FileValidatorException;
 import utility.model.SchemaParser.model.Row;
 import utility.model.SchemaParser.model.entity.Schemas;
 
-public class FileValidatorUtility {
+public class FileValidatorService {
 
     private static void validateRecord(String schemaPathFile, String extension) throws IOException {
         boolean foreignFlag = false;
